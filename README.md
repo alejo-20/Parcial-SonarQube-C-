@@ -602,6 +602,8 @@ public class CreateOrderUseCase
 - SQL Server (LocalDB, Express, o Docker)
 - Visual Studio 2022 / VS Code / Rider
 - Git
+- SonarQube Server (opcional, para análisis de código)
+- SonarScanner para .NET (opcional)
 
 ### 1. Clonar el Repositorio
 
@@ -730,6 +732,43 @@ curl -k -X POST https://localhost:5001/api/orders \
 # Ver órdenes recientes
 curl -k https://localhost:5001/api/orders/recent
 ```
+
+### 8. Ejecutar Análisis de SonarQube (Opcional)
+
+Para analizar la calidad del código con SonarQube:
+
+#### Configurar Token
+
+```powershell
+# Opción 1: Variable de entorno (recomendado)
+$env:SONAR_TOKEN = "tu-token-de-sonarqube"
+
+# Opción 2: Copiar y editar el script
+Copy-Item run-sonarqube-analysis.example.ps1 run-sonarqube-analysis.ps1
+# Editar run-sonarqube-analysis.ps1 y agregar tu token
+```
+
+#### Ejecutar Análisis
+
+```powershell
+# Asegurarse de que SonarQube Server esté corriendo en localhost:9000
+.\run-sonarqube-analysis.ps1
+```
+
+#### Ver Resultados
+
+Abrir navegador en: `http://localhost:9000/dashboard?id=BadCleanArch`
+
+**Métricas esperadas:**
+- ✅ Security Rating: A
+- ✅ Reliability Rating: A  
+- ✅ Maintainability Rating: A
+- ✅ 0 Vulnerabilidades
+- ✅ 0 Bugs
+- ✅ 0-5 Code Smells
+- ✅ Technical Debt: <30min
+
+Para más detalles, ver [SONARQUBE.md](SONARQUBE.md)
 
 ---
 

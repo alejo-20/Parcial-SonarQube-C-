@@ -50,6 +50,7 @@ artifacts/
 # SonarQube
 .sonarqube/
 .scannerwork/
+run-sonarqube-analysis.ps1
 
 # Rider
 .idea/
