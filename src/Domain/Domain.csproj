@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+  </PropertyGroup>
+
+  <!-- FIXED: Domain has NO dependencies - it's the core of the application -->
+  <!-- Following Clean Architecture: Domain layer should be independent -->
+</Project>
